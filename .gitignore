@@ -1,0 +1,11 @@
+# Docker gitignore - Orbis Team
+
+*.exe
+*.exe~
+*.orig
+test.main
+.*.swp
+.DS_Store
+.bashrc
+.editorconfig
+/nginx/extras
