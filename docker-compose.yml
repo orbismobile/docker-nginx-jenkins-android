@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+       - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    environment:
+       - NGINX_PORT=80
+  android:
+    build: ./jenkins
+    container_name: ajcontainer
+    environment:
+        - JAVA_OPTS="-Xmx4096m"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - android_sdk:/usr/share/jenkins/ref/sdk
+    depends_on:
+      - nginx
+    restart: always
+volumes:
+  jenkins_home:
+  android_sdk:
+
