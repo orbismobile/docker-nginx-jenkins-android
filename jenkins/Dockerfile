@@ -3,7 +3,7 @@ FROM jenkins/jenkins:latest
 LABEL maintainer="Orbis Team"
 
 # Change URL for use behind a reserve proy
-ENV JENKINS_OPTS="--prefix=/jenkins" 
+ENV JENKINS_OPTS="--prefix=/jenkins"
 
 # Install init.d groovy scripts
 #COPY ./init.groovy.d/executors.groovy       /usr/share/jenkins/ref/init.groovy.d/executors.groovy
@@ -45,4 +45,3 @@ RUN echo yes | apt-get install build-essential
 RUN gem install fastlane -NV
 
 USER jenkins
-
