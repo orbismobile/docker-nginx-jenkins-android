@@ -6,7 +6,7 @@
 </p>
 
 ## SUMMARY
-This Docker Project uses [nginx][1] and [jenkins][2] docker offcial images. You will be able to use nginx as a reverse proxy server to access jenkins automation server.
+This Docker Project uses [nginx][1] and [jenkins][2] docker official images. You will be able to use nginx as a reverse proxy server to access jenkins automation server.
 
 Note: All server configurations in nginx are made to work on a local environment. 
 
@@ -17,7 +17,7 @@ Note: All server configurations in nginx are made to work on a local environment
 ```bash
 docker ps
 ```
-You will see something two running containers as follows:
+You will see two running containers as follows:
 ```bash
 CONTAINER ID    IMAGE                        ...        PORTS                 NAMES
 621282adb463    nginxproject_nginxservice    ...  0.0.0.0:80->80/tcp    nginxproject_nginxservice_1
