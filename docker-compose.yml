@@ -1,29 +1,28 @@
-version: "3.3"
+version: '3'
 services:
-  nginx:
-    image: nginx:stable-alpine
+  jenkinsservice:
+    build: ./jenkins-service
+    networks: 
+      - mobilenet
     volumes:
-       - ./nginx/conf:/etc/nginx/conf.d
-       - ./nginx/extras:/etc/nginx/security.d
+      - jenkinshomevol:/var/jenkins_home
+      - androidsdkvol:/usr/share/jenkins/ref/sdk   
+
+  nginxservice:
+    build: ./nginx-service
     ports:
       - "80:80"
-    environment:
-       - NGINX_PORT=80
-  android:
-    build: ./jenkins
-    container_name: ajcontainer
-    environment:
-        - JAVA_OPTS="-Xmx4096m"
-    ports:
-      - "8080:8080"
-      - "50000:50000"
+    networks:
+      - mobilenet 
     volumes:
-      - jenkins_home:/var/jenkins_home
-      - android_sdk:/usr/share/jenkins/ref/sdk
-      - ./extras/projectkeys/:/var/jenkins_home/projectkeys
+      - ./nginx-service/conf.d:/etc/nginx/conf.d
+      - ./nginx-service/html:/usr/share/nginx/html
     depends_on:
-      - nginx
-    restart: always
+      - jenkinsservice
+
+networks:
+  mobilenet:
+
 volumes:
-  jenkins_home:
-  android_sdk:
+  jenkinshomevol:
+  androidsdkvol:    
