@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:latest
+FROM jenkins/jenkins:lts-alpine
 
 LABEL maintainer="Orbis Mobile Team"
 
@@ -15,15 +15,15 @@ ENV JENKINS_OPTS="--prefix=/jenkins"
 # Define the android home path
 ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
 
-ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
+#ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 
-RUN mkdir -p $ANDROID_HOME
+#RUN mkdir -p $ANDROID_HOME
 
-RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
+#RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
 
-RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
+#RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
-RUN rm -rf $ANDROID_HOME/sdk.zip
+#RUN rm -rf $ANDROID_HOME/sdk.zip
 
 #RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
 #"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
@@ -32,15 +32,15 @@ RUN rm -rf $ANDROID_HOME/sdk.zip
 #"cmake;3.6.4111459" "ndk-bundle"
 
 # if we want to install via apt
-USER root
+#USER root
 
-RUN apt-get update && apt-get install
+#RUN apt-get update && apt-get install
 
-RUN echo yes| apt-get install ruby-full
+#RUN echo yes| apt-get install ruby-full
 
-RUN echo yes | apt-get install build-essential
+#RUN echo yes | apt-get install build-essential
 
-RUN gem install fastlane -NV
+#RUN gem install fastlane -NV
 
 #Google Cloud SDK
 #RUN echo Y | apt-get install lsb-release
@@ -55,4 +55,4 @@ RUN gem install fastlane -NV
 #RUN echo n | gcloud init
 
 # drop back to the regular jenkins user - good practice
-USER jenkins
+#USER jenkins

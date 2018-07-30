@@ -2,7 +2,7 @@
 <h2 align="center">POWERED BY ORBIS MOBILE TEAM </h2>
 
 <p align="center">
-    <img src="screenshots/jenkins-nginx.png" alt="icon" width="75%"/>
+    <img src="screenshots/jenkins-nginx-alpine.png" alt="icon" width="75%"/>
 </p>
 
 ## SUMMARY
@@ -29,7 +29,7 @@ docker exec -i -t nginxproject_nginxservice_1 bash
 ```
 5. Inside the nginx docker container, we must create your own user basic auth
 ```bash
-htpasswd /etc/apache2/.htpasswd 'YOUR_USER_NAME'
+htpasswd -b -C 5 /etc/apache2/.htpasswd 'USERNAME' 'PASSWORD'
 ```
 6. You will be prompted to write a password.
 7. That's all, you have a nginx basic auth now.
