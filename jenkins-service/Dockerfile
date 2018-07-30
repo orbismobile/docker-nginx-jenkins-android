@@ -3,8 +3,8 @@ FROM jenkins/jenkins:lts-alpine
 LABEL maintainer="Orbis Mobile Team"
 
 # Preinstalling plugins
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+#COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+#RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 # Global variable for Fastlane
 ENV FASTLANE_BIN /usr/local/bin
@@ -28,13 +28,18 @@ ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
 #RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
 #"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
 #"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
-#"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
+#"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
 #"cmake;3.6.4111459" "ndk-bundle"
 
 # if we want to install via apt
-#USER root
+USER root
 
-#RUN apt-get update && apt-get install
+#RUN apk update && apk add ruby-full
+
+RUN apk update \
+&& apk add ruby
+
+#RUN gem install fastlane -NV
 
 #RUN echo yes| apt-get install ruby-full
 
