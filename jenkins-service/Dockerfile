@@ -25,7 +25,7 @@ RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
 RUN rm -rf $ANDROID_HOME/sdk.zip
 
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "extras;android;m2repository" \
 "extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
 "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
 "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
@@ -44,6 +44,17 @@ RUN apk update && \
         ruby-dev \
         g++ \
         make
+
+# install glibc for alpine
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-bin-2.26-r0.apk
+RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-i18n-2.26-r0.apk
+
+RUN apk add --no-cache --allow-untrusted glibc-2.26-r0.apk
+RUN apk add --no-cache --allow-untrusted glibc-bin-2.26-r0.apk
+RUN apk add --no-cache --allow-untrusted glibc-i18n-2.26-r0.apk
+
+RUN /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
 
 RUN gem install fastlane -NV
 
