@@ -3,8 +3,8 @@ FROM jenkins/jenkins:lts-alpine
 LABEL maintainer="Orbis Mobile Team"
 
 # Preinstalling plugins
-#COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-#RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 # Global variable for Fastlane
 ENV FASTLANE_BIN /usr/local/bin
@@ -15,37 +15,37 @@ ENV JENKINS_OPTS="--prefix=/jenkins"
 # Define the android home path
 ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
 
-#ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
+ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 
-#RUN mkdir -p $ANDROID_HOME
+RUN mkdir -p $ANDROID_HOME
 
-#RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
+RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
 
-#RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
+RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
-#RUN rm -rf $ANDROID_HOME/sdk.zip
+RUN rm -rf $ANDROID_HOME/sdk.zip
 
-#RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
-#"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
-#"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
-#"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "emulator" "extras;android;m2repository" \
+"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
+"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
 #"cmake;3.6.4111459" "ndk-bundle"
 
 # if we want to install via apt
 USER root
 
-#RUN apk update && apk add ruby-full
+#RUN apk add build-base
 
-RUN apk update \
-&& apk add ruby
+RUN apk update && \
+    apk add --no-cache \
+        ruby \
+        ruby-rdoc \
+        ruby-irb \
+        ruby-dev \
+        g++ \
+        make
 
-#RUN gem install fastlane -NV
-
-#RUN echo yes| apt-get install ruby-full
-
-#RUN echo yes | apt-get install build-essential
-
-#RUN gem install fastlane -NV
+RUN gem install fastlane -NV
 
 #Google Cloud SDK
 #RUN echo Y | apt-get install lsb-release
@@ -60,4 +60,4 @@ RUN apk update \
 #RUN echo n | gcloud init
 
 # drop back to the regular jenkins user - good practice
-#USER jenkins
+USER jenkins
