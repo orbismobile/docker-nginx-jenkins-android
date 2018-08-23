@@ -41,7 +41,7 @@ RUN apk update && \
         ruby \
         ruby-rdoc \
         ruby-irb \
-        ruby-dev \
+        ruby-dev \ 
         g++ \
         make
 
