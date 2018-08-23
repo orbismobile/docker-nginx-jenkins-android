@@ -25,7 +25,7 @@ CONTAINER ID    IMAGE                        ...        PORTS                 NA
 ```
 4. Access to the running nginx container: 
 ```bash
-docker exec -i -t nginxproject_nginxservice_1 bash
+docker exec -i -t nginxproject_nginxservice_1 /bin/bash
 ```
 5. Inside the nginx docker container, we must create your own user basic auth
 ```bash
