@@ -3,8 +3,8 @@ FROM jenkins/jenkins:lts-alpine
 LABEL maintainer="Orbis Mobile Team"
 
 # Preinstalling plugins
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+#COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+#RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 # Global variable for Fastlane
 ENV FASTLANE_BIN /usr/local/bin
@@ -25,10 +25,10 @@ RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
 RUN rm -rf $ANDROID_HOME/sdk.zip
 
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "extras;android;m2repository" \
-"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
-"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
-"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" "build-tools;27.0.1"
+#"extras;google;m2repository" "platform-tools" "platforms;android-27" "build-tools;27.0.1" \
+#"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+#"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" 
 #"cmake;3.6.4111459" "ndk-bundle"
 
 # if we want to install via apt
