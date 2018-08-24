@@ -44,6 +44,15 @@ as we explain above and could access to the jenkins server.
 
 After enter your right credentials, you will be redirect to the jenkins server.
 
+## INSTALLING MORE ANDROID SDK LIBRARIES
+You can download these additional libraries for building your app:
+```bash
+cd $ANDROID_HOME/tools/bin/ && ./sdkmanager "extras;google;m2repository" "platforms;android-27" \
+"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
+"cmake;3.6.4111459" "ndk-bundle"
+```
+
 ## CLONING A BITBUCKET REPOSITORY WITH JENKINS
 Keep in mind that jenkins container already has the `jenkins user`. So you can clone any repository through this user. For that purpose, we are going to create our SSH keys inside the container:
 1. Enter to the jenkins repository:
