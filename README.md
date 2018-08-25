@@ -77,7 +77,7 @@ ssh-keygen
 ```
 6. Press enter and we'll have our private and public keys, something like this:
 ```bash
-cd && cd .ssh && ls
+cd ; cd .ssh ; ls
 id_rsa	id_rsa.pub  known_hosts
 ```
 
