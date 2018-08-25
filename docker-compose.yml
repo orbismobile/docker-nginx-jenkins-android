@@ -11,7 +11,7 @@ services:
   nginxservice:
     build: ./nginx-service
     ports:
-      - "8000:80"
+      - "80:80"
     networks:
       - mobilenet 
     volumes:
