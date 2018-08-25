@@ -25,7 +25,7 @@ RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
 RUN rm -rf $ANDROID_HOME/sdk.zip
 
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" "build-tools;27.0.1"
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" "build-tools;27.0.1"
 
 # if we want to install via apt
 USER root
