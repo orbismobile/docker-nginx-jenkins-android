@@ -77,7 +77,7 @@ ssh-keygen
 ```
 6. Press enter and we'll have our private and public keys, something like this:
 ```bash
-cd ~./ssh; ls
+cd && cd .ssh && ls
 id_rsa	id_rsa.pub  known_hosts
 ```
 
@@ -91,5 +91,15 @@ git clone git@bitbucket.org:orbisunt/YOU_REPO.git
 4. This time you will be able to clone your repository.
 5. Happy coding!!!!
 
+## COMMON ERROR WITH FASTLANE
+
+ERROR: Git repository is dirty! Please ensure the repo is in a clean state by committing/stashing/discarding all changes first.
+SOLUTION: Add fastlane/report.xml code line to your .gitignore file
+
+## COMMON ERRORS WITH CRASHLYTICS
+ERROR: WARN - Crashlytics had a problem uploading the distribution. Project is inactive
+SOLUTION: Imeplementing crashlytic correctly in your project and generate a crash to active the app in crashlytics darshboard.
+
 [1]: https://hub.docker.com/_/nginx/
 [2]: https://hub.docker.com/r/jenkins/jenkins/
+
