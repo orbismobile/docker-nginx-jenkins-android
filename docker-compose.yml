@@ -4,15 +4,9 @@ services:
     build: ./jenkins-service
     ports:
       - "8080:8080"
-    networks: 
-      - mobilenet
     volumes:
       - jenkinshomevol:/var/jenkins_home
       - androidsdkvol:/usr/share/jenkins/ref/sdk   
-
-networks:
-  mobilenet:
-
 volumes:
   jenkinshomevol:
   androidsdkvol:    
