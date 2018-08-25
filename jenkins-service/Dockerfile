@@ -3,29 +3,29 @@ FROM jenkins/jenkins:lts-alpine
 LABEL maintainer="Orbis Mobile Team"
 
 # Preinstalling plugins
-#COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-#RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 # Global variable for Fastlane
 ENV FASTLANE_BIN /usr/local/bin
 
 # Configuring reverse proxy
-#ENV JENKINS_OPTS="--prefix=/jenkins"
+ENV JENKINS_OPTS="--prefix=/jenkins"
 
 # Define the android home path
 ENV ANDROID_HOME /usr/share/jenkins/ref/sdk
 
 ARG ANDROID_SDK_URL_FOR_LINUX=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 
-#RUN mkdir -p $ANDROID_HOME
+RUN mkdir -p $ANDROID_HOME
 
-#RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
+RUN curl -o $ANDROID_HOME/sdk.zip ${ANDROID_SDK_URL_FOR_LINUX}
 
-#RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
+RUN unzip -d $ANDROID_HOME $ANDROID_HOME/sdk.zip
 
-#RUN rm -rf $ANDROID_HOME/sdk.zip
+RUN rm -rf $ANDROID_HOME/sdk.zip
 
-#RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" "build-tools;27.0.1"
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" "build-tools;27.0.1"
 
 RUN git config --global user.email "carlosleonardovargashuaman@gmail.com"
 
