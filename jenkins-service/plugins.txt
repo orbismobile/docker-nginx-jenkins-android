@@ -4,6 +4,7 @@ ant:latest
 antisamy-markup-formatter:latest
 apache-httpcomponents-client-4-api:latest
 authentication-tokens:latest
+bitbucket:latest
 blueocean:latest
 blueocean-autofavorite:latest
 blueocean-bitbucket-pipeline:latest

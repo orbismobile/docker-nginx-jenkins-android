@@ -8,7 +8,7 @@
 ## SUMMARY
 This Docker Project uses [nginx][1] and [jenkins][2] docker official images. You will be able to use nginx as a reverse proxy server to access jenkins automation server.
 
-Note: All server configurations in nginx are made to work on a local environment. 
+Note: All server configurations in nginx are made to work on a local environment.
 
 ## PREREQUISITIES
 1. Install `Docker` and `Docker Compose`.
@@ -29,13 +29,13 @@ docker exec -i -t nginxproject_nginxservice_1 /bin/sh
 ```
 5. Inside the nginx docker container, we must create your own user basic auth
 ```bash
-htpasswd -b -C 5 /etc/apache2/.htpasswd 'USERNAME' 'PASSWORD'
+htpasswd -b -C 5 /etc/apache2/.htpasswd YOUR_USER_NAME YOUR_PASSWORD
 ```
 6. You will be prompted to write a password.
 7. That's all, you have a nginx basic auth now.
 
 ## LET'S GET STARTED
-Go to http://localhost/jenkins and you will be prompted to write you user authentication, write your YOUR_USER_NAME and PASSWORD
+Go to http://localhost/jenkins and you will be prompted to write you user authentication, write your YOUR_USER_NAME and YOUR_PASSWORD
 as we explain above and could access to the jenkins server.
 
 <p align="center">
@@ -43,15 +43,6 @@ as we explain above and could access to the jenkins server.
 </p>
 
 After enter your right credentials, you will be redirect to the jenkins server.
-
-## INSTALLING MORE ANDROID SDK LIBRARIES
-You can download these additional libraries for building your app:
-```bash
-cd $ANDROID_HOME/tools/bin/ && ./sdkmanager "extras;google;m2repository" "platforms;android-27" \
-"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
-"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
-"cmake;3.6.4111459" "ndk-bundle"
-```
 
 ## CLONING A BITBUCKET REPOSITORY WITH JENKINS
 Keep in mind that jenkins container already has the `jenkins user`. So you can clone any repository through this user. For that purpose, we are going to create our SSH keys inside the container:
@@ -77,7 +68,7 @@ ssh-keygen
 ```
 6. Press enter and we'll have our private and public keys, something like this:
 ```bash
-cd ; cd .ssh ; ls
+cd /var/jenkins_home/.ssh ; ls
 id_rsa	id_rsa.pub  known_hosts
 ```
 
@@ -91,14 +82,26 @@ git clone git@bitbucket.org:orbisunt/YOU_REPO.git
 4. This time you will be able to clone your repository.
 5. Happy coding!!!!
 
-## COMMON ERROR WITH FASTLANE
+## INSTALLING ADDITIONAL ANDROID SDK LIBRARIES
+If you wish, you can download these additional libraries for building your app:
+```bash
+cd $ANDROID_HOME/tools/bin/ && ./sdkmanager "extras;google;m2repository" "platforms;android-27" \
+"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
+"cmake;3.6.4111459" "ndk-bundle"
+```
 
+## COMMON ERRORS WITH FASTLANE
 ERROR: Git repository is dirty! Please ensure the repo is in a clean state by committing/stashing/discarding all changes first.
 SOLUTION: Add fastlane/report.xml code line to your .gitignore file
 
 ## COMMON ERRORS WITH CRASHLYTICS
 ERROR: WARN - Crashlytics had a problem uploading the distribution. Project is inactive
 SOLUTION: Imeplementing crashlytic correctly in your project and generate a crash to active the app in crashlytics darshboard.
+
+## COMMON ERRORS WHEN WORKING WITH GOOGLE CLOUD
+Make the server port is available, usually the default available por is 80
+
 
 [1]: https://hub.docker.com/_/nginx/
 [2]: https://hub.docker.com/r/jenkins/jenkins/
