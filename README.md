@@ -26,13 +26,13 @@ docker ps
 ```
 You will see two running containers as follows:
 ```bash
-CONTAINER ID    IMAGE                        ...        PORTS                 NAMES
-621282adb463    nginxproject_nginxservice    ...  0.0.0.0:80->80/tcp    nginxproject_nginxservice_1
-4dd4d4c68b65    nginxproject_jenkinsservice  ...  8080/tcp, 50000/tcp   nginxproject_jenkinsservice_1
+CONTAINER ID    IMAGE                          ...        PORTS                 NAMES
+621282adb463    jenkinsandroid_nginxservice    ...  0.0.0.0:80->80/tcp    ...jenkinsandroid_nginxservice_1
+4dd4d4c68b65    jenkinsandroid_jenkinsservice  ...  8080/tcp, 50000/tcp   ..jenkinsandroid_jenkinsservice_1
 ```
 4. Access to the running nginx container: 
 ```bash
-docker exec -i -t nginxproject_nginxservice_1 /bin/sh
+docker exec -i -t docker-nginx-jenkins-android_nginxservice_1 sh
 ```
 5. Inside the nginx docker container, we must create your own user basic auth
 ```bash
@@ -78,10 +78,12 @@ ssh-keygen
 cd /var/jenkins_home/.ssh ; ls
 id_rsa	id_rsa.pub  known_hosts
 ```
-
 ## ADDIND PUBLIC KEY TO BITBUCKET REPOSITORY
 1. Go to Bitbucket -> bitbucket settings -> SSH Keys.
 2. Copy the content of your id_rsa.pub and add it.
+```bash
+cat /var/jenkins_home/.ssh/id_rsa.pub
+```
 3. Once your bitbucket repository already has your public key, try to clone your repository with ssh again:
 ```bash
 git clone git@bitbucket.org:orbisunt/YOU_REPO.git
