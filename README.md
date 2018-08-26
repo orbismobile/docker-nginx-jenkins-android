@@ -10,6 +10,13 @@ This Docker Project uses [nginx][1] and [jenkins][2] docker official images. You
 
 Note: All server configurations in nginx are made to work on a local environment.
 
+# THE FINAL CONTINUOUS INTEGRATION FLOW
+If you want to implement the complete [Continuous Integration Flow][3] for your development process, so take a look at our
+[Medium Post][3].
+<p align="center">
+    <img src="screenshots/ci.png" alt="icon" width="50%"/>
+</p>
+
 ## PREREQUISITIES
 1. Install `Docker` and `Docker Compose`.
 2. At top level project run `docker-compose up` command from terminal.
@@ -105,4 +112,5 @@ Make the server port is available, usually the default available por is 80
 
 [1]: https://hub.docker.com/_/nginx/
 [2]: https://hub.docker.com/r/jenkins/jenkins/
+[3]: https://medium.com/p/3bc00a9b99f/edit
 
