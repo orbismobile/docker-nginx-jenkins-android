@@ -3,5 +3,5 @@ services:
   jenkinsservice:
     build: ./jenkins-service
     ports:
-      - "8080:8080" 
+      - "80:8080" 
       - "5000:5000"

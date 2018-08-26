@@ -100,6 +100,10 @@ SOLUTION: Add fastlane/report.xml code line to your .gitignore file
 ERROR: WARN - Crashlytics had a problem uploading the distribution. Project is inactive
 SOLUTION: Imeplementing crashlytic correctly in your project and generate a crash to active the app in crashlytics darshboard.
 
+## COMMON ERRORS WHEN WORKING WITH GOOGLE CLOUD
+Make the server port is available, usually the default available por is 80
+
+
 [1]: https://hub.docker.com/_/nginx/
 [2]: https://hub.docker.com/r/jenkins/jenkins/
 
