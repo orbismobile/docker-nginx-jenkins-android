@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:lts-alpine
 
-LABEL maintainer="Orbis Mobile Team"
+LABEL maintainer="Orbis Mobile CARLOS"
 
 # Preinstalling plugins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
