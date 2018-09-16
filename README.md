@@ -5,8 +5,8 @@
     <img src="screenshots/jenkins-nginx.png" alt="icon" width="75%"/>
 </p>
 
-## REVIEW ALPINE VERSION
-If you want to work with the best lightweight alpine images review, then [review the alpine branch][3]
+## BEFORE GETTING INTO, REVIEW ALPINE VERSION
+This project uses the latest version on each image, this is well-recommended for development purpose but if you want to work in production environment we tightly recommend you to work with the best lightweight alpine images, so [review the alpine branch.][3]
 
 ## SUMMARY
 This Docker Project uses [nginx][1] and [jenkins][2] docker official images. You will be able to use nginx as a reverse proxy server to access jenkins automation server.
