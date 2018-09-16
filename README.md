@@ -10,11 +10,11 @@ This Docker Project uses [nginx][1] and [jenkins][2] docker official images. You
 
 Note: All server configurations in nginx are made to work on a local environment.
 
-# THE FINAL CONTINUOUS INTEGRATION FLOW
+## THE FINAL CONTINUOUS INTEGRATION FLOW
 If you want to implement the complete [Continuous Integration Flow][3] for your development process, so take a look at our
 [Medium Post][3].
 <p align="center">
-    <img src="screenshots/ci.png" alt="icon" width="50%"/>
+    <img src="screenshots/ci.png" alt="icon" width="70%"/>
 </p>
 
 ## PREREQUISITIES
@@ -32,7 +32,7 @@ CONTAINER ID    IMAGE                          ...        PORTS                 
 ```
 4. Access to the running nginx container: 
 ```bash
-docker exec -i -t docker-nginx-jenkins-android_nginxservice_1 sh
+docker exec -i -t dockernginxjenkinsandroid_nginxservice_1 sh
 ```
 5. Inside the nginx docker container, we must create your own user basic auth
 ```bash
@@ -91,6 +91,24 @@ git clone git@bitbucket.org:orbisunt/YOU_REPO.git
 4. This time you will be able to clone your repository.
 5. Happy coding!!!!
 
+## RUNNING ANDROID UI TESTS
+When it comes to Android UI Tests, the best way is to run tests in a separate host machine. For that purpose, to advantage of the speed of emulators in your host machine(MacOSX, Linux, Windows). We are going to create a Jenkins Slave Node.
+
+1. Go to  Manage Jenkins > Manage Nodes.
+2. Enter Node Name. For example "android".
+3. Select Permanent Agent and press OK.
+3. Number of executors. For example 1.
+4. Set a Remote FS Root. For example "/Users/carlitosdroid/slave"
+5. Launch Method > Launch slave agents via Java Web Start
+6. That's all. Press Save and Go back to Nodes.
+7. Connect slave to jenkins from terminal  run the following:
+
+```bash
+java -jar agent.jar -jnlpUrl http://localhost/jenkins/computer/android/slave-agent.jnlp -secret 636e4c1230031230536a46a3fc8f782fa123ea56477fb3f3226c06fcdcf09dd6 -workDir "/Users/carlitosdroid/slave" -auth YOUR_USER_NAME:YOUR_PASSWORD
+```
+
+All the steps above are here: [Step by step guide to set up master and slave machines on Windows][4]
+
 ## INSTALLING ADDITIONAL ANDROID SDK LIBRARIES
 If you wish, you can download these additional libraries for building your app:
 ```bash
@@ -115,4 +133,5 @@ Make the server port is available, usually the default available por is 80
 [1]: https://hub.docker.com/_/nginx/
 [2]: https://hub.docker.com/r/jenkins/jenkins/
 [3]: https://medium.com/p/3bc00a9b99f/edit
+[4]: https://wiki.jenkins.io/display/JENKINS/Step+by+step+guide+to+set+up+master+and+slave+machines+on+Windows
 
