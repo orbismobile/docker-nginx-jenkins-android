@@ -92,7 +92,7 @@ git clone git@bitbucket.org:orbisunt/YOU_REPO.git
 5. Happy coding!!!!
 
 ## RUNNING ANDROID UI TESTS
-When it comes to Android UI Tests, the best way is to run tests in a separate host machine. For that purpose, to advantage of the speed of emulators in your host machine(MacOSX, Linux, Windows). We are going to create a Jenkins Slave Node.
+When it comes to Android UI Tests, the best way is to run tests in a separate host machine. For that purpose, to take advantage of the speed of emulators in your host machine(MacOSX, Linux, Windows). We are going to create a Jenkins Slave Node.
 
 1. Go to  Manage Jenkins > Manage Nodes.
 2. Enter Node Name. For example "android".
