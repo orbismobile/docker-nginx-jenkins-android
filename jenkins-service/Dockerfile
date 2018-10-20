@@ -27,9 +27,8 @@ RUN rm -rf $ANDROID_HOME/sdk.zip
 
 RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" "build-tools;27.0.1"
 
-RUN git config --global user.email "carlosleonardovargashuaman@gmail.com"
-
-RUN git config --global user.name "Carlos Leonardo Camilo Vargas Huamán"
+# Add gitconfig values
+COPY .gitconfig $JENKINS_HOME
 
 # if we want to install via apt
 USER root
