@@ -57,17 +57,4 @@ RUN /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
 
 RUN gem install fastlane -NV
 
-#Google Cloud SDK
-#RUN echo Y | apt-get install lsb-release
-
-#RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
-#    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-#    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-#    apt-get update
-
-#RUN echo Y | apt-get install google-cloud-sdk
-
-#RUN echo n | gcloud init
-
-# drop back to the regular jenkins user - good practice
 USER jenkins
