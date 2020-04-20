@@ -1,22 +1,24 @@
-version: '3'
+version: "3"
 services:
   jenkinsservice:
     build: ./jenkins-service
-    networks: 
+    ports: 
+      - "50000:50000"
+    networks:
       - mobilenet
     volumes:
-      - jenkinshomevol:/var/jenkins_home
-      - androidsdkvol:/usr/share/jenkins/ref/sdk   
+      - jenkins_home:/var/jenkins_home
 
   nginxservice:
     build: ./nginx-service
     ports:
       - "80:80"
     networks:
-      - mobilenet 
+      - mobilenet
     volumes:
       - ./nginx-service/conf.d:/etc/nginx/conf.d
       - ./nginx-service/html:/usr/share/nginx/html
+      - nginx_apache2:/etc/apache2
     depends_on:
       - jenkinsservice
 
@@ -24,5 +26,5 @@ networks:
   mobilenet:
 
 volumes:
-  jenkinshomevol:
-  androidsdkvol:    
+  jenkins_home:
+  nginx_apache2:
