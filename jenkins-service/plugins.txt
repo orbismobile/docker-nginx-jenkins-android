@@ -1,3 +1,4 @@
 android-lint:latest
 slack:latest
 ssh-slaves:latest
+blueocean:latest
